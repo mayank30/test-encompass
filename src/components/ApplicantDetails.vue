@@ -15,6 +15,11 @@
       Last Updated: 13:31 28/07/2022 IST
     </div>
   </div>
+
+  <br />
+
+  <h3>To Initate Transaction Click here</h3>
+  <button @click="createTransaction">Initate Transaction</button>
 </template>
 
 <script>
@@ -23,6 +28,7 @@ export default {
   data() {
     return {
       originationContext: {},
+      transaction: null,
       callStatus: "<span style='color:grey'>Not Triggered</span>",
     };
   },
@@ -32,8 +38,8 @@ export default {
         this.callStatus =
           "<span style='color:orange'>Triggered and waiting for the response</span>";
 
-        const transactionObject = await host.getObject("transaction");
-        const originationContext = transactionObject.getOrigin();
+        this.transaction = await host.getObject("transaction");
+        const originationContext = this.transaction.getOrigin();
         console.log(originationContext);
         this.callStatus = "<span style='color:green'>Complete</span>";
         // applicationState.originId = originationContext.id;
@@ -45,6 +51,9 @@ export default {
       } catch (error) {
         console.log({ error });
       }
+    },
+    async createTransaction() {
+      await this.transaction.create();
     },
   },
   async created() {
