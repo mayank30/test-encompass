@@ -1,0 +1,19 @@
+{
+  "name": "vite",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@elliemae/em-ssf-guest": "^1.11.2",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "tailwindcss": "^3.1.6",
+    "vite": "^2.4.0"
+  }
+}
