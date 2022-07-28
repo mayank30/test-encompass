@@ -31,6 +31,7 @@ export default {
       try {
         this.callStatus =
           "<span style='color:orange'>Triggered and waiting for the response</span>";
+
         const transactionObject = await host.getObject("transaction");
         const originationContext = transactionObject.getOrigin();
         console.log(originationContext);
@@ -46,8 +47,10 @@ export default {
       }
     },
   },
-  created() {
-    this.initializeOriginationContext();
+  async created() {
+    host.connect();
+    host.ready();
+    await this.initializeOriginationContext();
   },
 };
 </script>
